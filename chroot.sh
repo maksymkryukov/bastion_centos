@@ -29,8 +29,11 @@ CHROOT=chroot
 
 
 cat > /${CHROOT}/etc/bashrc <<EOF
-PS1='\[\e[1;32m\][\u@\h \W]\$\[\e[0m\] '
-[ -f ~/.google_authenticator ] || google-authenticator --qr-mode=utf8 -tdf --rate-limit=3 --rate-time=30 --window-size=10
+PS1='\[\e[1;32m\][\u@\h \W]$\[\e[0m\] '
+if [ ! -f ~/.google_authenticator ]; then
+ google-authenticator --qr-mode=utf8 -tdf --rate-limit=3 --rate-time=30 --window-size=10
+ exit 0
+fi
 EOF
 
                                       
