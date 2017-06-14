@@ -34,7 +34,7 @@ sed -i '/#%PAM/a auth\ \ \ \ \ \ \ required\ \ \ \ \ pam_google_authenticator.so
 
 ####### CREATE emerge user
 pass=`openssl rand -base64 10`;
-  adduser --groups emerge,wheel emerge ;
+  adduser --groups wheel -g emerge emerge ;
    echo -e "$pass\n$pass" | (passwd --stdin emerge)
     echo "emerge => $pass"
 
