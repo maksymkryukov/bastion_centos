@@ -30,7 +30,7 @@ EOF
 sed -i '2 iauth       required     pam_google_authenticator.so secret=/home/${USER}/.google_authenticator  nullok' /etc/pam.d/sshd
 sed -i '2 iauth       required     pam_google_authenticator.so secret=/chroot/home/${USER}/.google_authenticator  nullok' /etc/pam.d/sshd
 sed -i "s/ChallengeResponseAuthentication .*/ChallengeResponseAuthentication yes/" /etc/ssh/sshd_config
-sed -i '/#%PAM/a auth\ \ \ \ \ \ \ required\ \ \ \ \ pam_google_authenticator.so' /etc/pam.d/sshd
+
 
 ####### CREATE emerge user
 pass=`openssl rand -base64 10`;
