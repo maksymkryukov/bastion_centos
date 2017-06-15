@@ -14,7 +14,7 @@ elif [ $2 == 'admin' ]; then
   adduser --groups chroot,$2 $1
   usermod -G chroot,$2 $1
 else
-  echo "It is not admin group"
+  echo '!!!It is not admin group!!!'
 fi
 
 /bin/cp -fa /home/$1 /chroot/home/$1
