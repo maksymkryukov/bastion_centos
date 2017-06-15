@@ -5,7 +5,7 @@
 
 pass=`openssl rand -base64 10`;
 groupadd chroot 2>/dev/null
-adduser --groups chroot $1 ;
+adduser --groups chroot,$2 $1 ;
 /bin/cp -fa /home/$1 /chroot/home/$1
 echo -e "$pass\n$pass" | (passwd --stdin $1)
 
