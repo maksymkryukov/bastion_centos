@@ -18,6 +18,7 @@ echo
 echo "$1 member of:"
 lid $1
 echo
+echo "TEMPORARY password was created"
 echo "$1 => $pass"
 
 #
