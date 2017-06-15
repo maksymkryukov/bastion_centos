@@ -15,7 +15,7 @@ fi
 BINF=$1
 /bin/cp -fv $BINF ${BASE}${BINF}
 
-[ $2 == 'admin'] && \
+[ $2 == 'admin' ] && \
         chmod 550 ${BASE}${BINF} && chgrp admin ${BASE}${BINF}
 
 
