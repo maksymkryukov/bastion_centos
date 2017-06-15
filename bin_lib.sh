@@ -3,6 +3,9 @@
 # Set CHROOT directory name
 BASE="/chroot"
 
+groupadd admin 2>/dev/null
+
+
 /usr/bin/ls /$1 >/dev/null 2>&1
 if  [ $? -gt 0 ]; then
         echo NEED FULL PATH
@@ -11,6 +14,10 @@ fi
 
 BINF=$1
 /bin/cp -fv $BINF ${BASE}${BINF}
+
+[ $2 == 'admin'] && \
+        chmod 550 ${BASE}${BINF} && chgrp admin ${BASE}${BINF}
+
 
 [ -f ${BASE}${BINF} ] || exit 1
 
