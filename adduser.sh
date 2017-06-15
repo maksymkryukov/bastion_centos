@@ -8,8 +8,10 @@ groupadd chroot 2>/dev/null
 
 if [ -z $2 ]; then
   adduser --groups chroot $1 
-else
+elif [ $2 == 'adm' ]; then
   adduser --groups chroot,$2 $1
+else
+  echo "It is not adm group"
 fi
 
 /bin/cp -fa /home/$1 /chroot/home/$1
