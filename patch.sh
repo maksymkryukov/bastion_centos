@@ -23,6 +23,22 @@ Match Group chroot
 
 EOF
 
+cat >> /etc/pam.d/system-auth <<EOF
+### FOR ACCESSLIST
+account     required      pam_access.so
+password    requisite     pam_cracklib.so  retry=3 minlen=10 difok=4 
+password    requisite     pam_pwquality.so try_first_pass local_users_only retry=3 authtok_type=
+password    sufficient    pam_unix.so sha512 shadow try_first_pass use_authtok remember=4
+password    required      pam_deny.so
+EOF
+
+cat >> /etc/security/access.conf <<EOF
++ : root : cron crond
++ : emerge : 10.234.0.0/16
++ : (saasops) : ALL
+- : ALL : ALL
+EOF
+
 /bin/cp -f /lib64/libqrencode.so.3 /chroot/lib64/
 /bin/cp -f /lib64/libqrencode.so.3.4.1 /chroot/lib64/
 
