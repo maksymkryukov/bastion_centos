@@ -17,7 +17,7 @@ else
   echo -e '\n!!!It is not admin group!!!'
 fi
 
-/bin/cp -fa /home/$1 /chroot/home/$1
+[ -d /chroot/home/$1 ] || /bin/cp -fa /home/$1 /chroot/home/$1
 echo -e "$pass\n$pass" | (passwd --stdin $1)
 chage -d 0 $1;
 
