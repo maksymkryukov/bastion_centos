@@ -7,9 +7,11 @@ pass=`openssl rand -base64 10`;
 groupadd chroot 2>/dev/null
 
 if [ -z $2 ]; then
-  adduser --groups chroot $1 
+  adduser --groups chroot $1
+  usermod -G chroot
 elif [ $2 == 'adm' ]; then
   adduser --groups chroot,$2 $1
+  usermod -G chroot,$2
 else
   echo "It is not adm group"
 fi
