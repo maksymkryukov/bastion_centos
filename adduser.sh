@@ -5,6 +5,7 @@
 
 pass=`openssl rand -base64 10`;
 groupadd chroot 2>/dev/null
+groupadd admin 2>/dev/null
 
 if [ -z $2 ]; then
   adduser --groups chroot $1
