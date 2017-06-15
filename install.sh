@@ -1,5 +1,5 @@
 #!/bin/bash
-
+PWD=`pwd`
     sudo sed -i -e 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config && setenforce 0
     yum -y groupinstall "Development Tools"
     yum -y install pam-devel wget
@@ -17,5 +17,5 @@
     sudo make install
 
 
-bash chroot.sh
-bash patch.sh
+bash $PWD/chroot.sh
+bash $PWD/patch.sh
