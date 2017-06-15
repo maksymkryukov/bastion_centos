@@ -17,9 +17,11 @@ else
   echo -e '\n!!!It is not admin group!!!'
 fi
 
-[ -d /chroot/home/$1 ] || /bin/cp -fa /home/$1 /chroot/home/$1
-echo -e "$pass\n$pass" | (passwd --stdin $1)
-chage -d 0 $1;
+if [ ! -d /chroot/home/$1 ]; then 
+  /bin/cp -fa /home/$1 /chroot/home/$1
+  echo -e "$pass\n$pass" | (passwd --stdin $1)
+  chage -d 0 $1;
+fi
 
 #DISABLE BASH NOT IN CHROOT
 echo "exit 0" > /home/$1/.bashrc
