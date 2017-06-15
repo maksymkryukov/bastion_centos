@@ -34,8 +34,8 @@ EOF
 
 cat >> /etc/security/access.conf <<EOF
 + : root : cron crond
-+ : emerge : 10.234.0.0/16
-+ : (saasops) : ALL
++ : (emerge) : 10.234.0.0/16
++ : (chroot) : ALL
 - : ALL : ALL
 EOF
 
