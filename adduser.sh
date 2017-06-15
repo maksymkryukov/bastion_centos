@@ -11,10 +11,11 @@ echo -e "$pass\n$pass" | (passwd --stdin $1)
 
 #
 echo "exit 0" > /home/$1/.bashrc
-
-
 chage -d 0 $1;
-sleep 1;
+
+echo "$1 member of"
+lid $1
+echo
 echo "$1 => $pass"
 
 /bin/cp -fa /etc/passwd /chroot/etc/passwd 
