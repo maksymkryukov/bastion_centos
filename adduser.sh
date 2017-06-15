@@ -8,10 +8,10 @@ groupadd chroot 2>/dev/null
 
 if [ -z $2 ]; then
   adduser --groups chroot $1
-  usermod -G chroot
+  usermod -G chroot $1
 elif [ $2 == 'admin' ]; then
   adduser --groups chroot,$2 $1
-  usermod -G chroot,$2
+  usermod -G chroot,$2 $1
 else
   echo "It is not admin group"
 fi
